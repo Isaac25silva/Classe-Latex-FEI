@@ -91,7 +91,7 @@ and the derived files           fei.pdf and
 % \fi
 % \iffalse
 %<*driver>
-\documentclass[rascunho,xindy]{\jobname}
+\documentclass[rascunho,xindy,twoside]{\jobname}
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 
@@ -111,17 +111,17 @@ and the derived files           fei.pdf and
 \newacronym{qed}{QED}{\textit{quod erat demonstrandum}}
 \newacronym{ctan}{CTAN}{\textit{Comprehensive \TeX\ Archive Network}}
 
-\newglossaryentry{h}{type=simbolos, name={\ensuremath{H}}, sort=h, description={Esquema}}
-\newglossaryentry{t}{type=simbolos, name={\ensuremath{t}}, sort=t, description={Geração}}
-\newglossaryentry{m}{type=simbolos, name={\ensuremath{m}}, sort=m, description={número de cadeias pertences a \gls{h} na geração \gls{t}}}
-\newglossaryentry{f}{type=simbolos, name={\ensuremath{f}}, sort=f, description={aptidão média observada de \gls{h}}}
-\newglossaryentry{at}{type=simbolos, name={\ensuremath{a_t}}, sort=a, description={aptidão média observada na geração \gls{t}}}
-\newglossaryentry{p}{type=simbolos, name={\ensuremath{p}}, sort=p, description={probabilidade de ruptura de \gls{h}}}
-\newglossaryentry{oh}{type=simbolos, name={\ensuremath{o}}, sort=o, description={ordem de \gls{h}}}
-\newglossaryentry{l}{type=simbolos, name={\ensuremath{l}}, sort=l, description={tamanho do código}}
-\newglossaryentry{pm}{type=simbolos, name={\ensuremath{p_m}}, sort=pm, description={probabilidade de mutação}}
-\newglossaryentry{pc}{type=simbolos, name={\ensuremath{p_c}}, sort=pc, description={probabilidade de cruzamento}}
-\newglossaryentry{delta}{type=simbolos, name={\ensuremath{\delta}}, sort=delta, description={menor comprimento de \gls{h}}}
+\newglossaryentry{h}{type=symbols, name={\ensuremath{H}}, sort=h, description={Esquema}}
+\newglossaryentry{t}{type=symbols, name={\ensuremath{t}}, sort=t, description={Geração}}
+\newglossaryentry{m}{type=symbols, name={\ensuremath{m}}, sort=m, description={número de cadeias pertences a \gls{h} na geração \gls{t}}}
+\newglossaryentry{f}{type=symbols, name={\ensuremath{f}}, sort=f, description={aptidão média observada de \gls{h}}}
+\newglossaryentry{at}{type=symbols, name={\ensuremath{a_t}}, sort=a, description={aptidão média observada na geração \gls{t}}}
+\newglossaryentry{p}{type=symbols, name={\ensuremath{p}}, sort=p, description={probabilidade de ruptura de \gls{h}}}
+\newglossaryentry{oh}{type=symbols, name={\ensuremath{o}}, sort=o, description={ordem de \gls{h}}}
+\newglossaryentry{l}{type=symbols, name={\ensuremath{l}}, sort=l, description={tamanho do código}}
+\newglossaryentry{pm}{type=symbols, name={\ensuremath{p_m}}, sort=pm, description={probabilidade de mutação}}
+\newglossaryentry{pc}{type=symbols, name={\ensuremath{p_c}}, sort=pc, description={probabilidade de cruzamento}}
+\newglossaryentry{delta}{type=symbols, name={\ensuremath{\delta}}, sort=delta, description={menor comprimento de \gls{h}}}
 
 \begin{document}
 
@@ -172,32 +172,36 @@ O texto é organizado da seguinte forma: este capítulo termina enumerando os pa
 Toda a formatação foi realizada a partir da importação e configuração de pacotes já existentes e disponíveis nas diversas distribuições de \index{Latex@\LaTeX}\LaTeX\ existentes. Durante o desenvolvimento desta classe, buscou-se utilizar o menor número de pacotes possíveis e sempre os mais comuns de serem encontrados. É necessário enfatizar a necessidade de instalação destes pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX\ (para Windows), Mac\TeX\ (para Mac OS) e \TeX\ Live (para Linux e Mac OS).
     
     \begin{enumerate}
-        \item\texttt{geometry}: mudança do tamanho das margens;
-        \item\texttt{fancyhdr}: formatação dos cabeçalhos;
-        \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
-        \item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
+        \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
         \item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
-        \item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
-        \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
-        \item\texttt{times}: carrega fonte Times New Roman;
-        \item\texttt{uarial}: carrega fonte URW Arial;
-        \item\texttt{graphicx}: importação e utilização de imagens;
-        \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
-        \item\texttt{hyperref}: gera os links entre referências no PDF;
-        \item\texttt{setspace}: espaçamento entre linhas aproximado de 1,5 linhas;
+        \item\texttt{amsthm}: possibilita criação de teoremas (e derivados); 
+        \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
         \item\texttt{caption}: altera a formatação de certas legendas;
-        \item\texttt{tocloft}: permite melhor personalização de itens do sumário, lista de figuras e tabelas;
-        \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
+        \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
+        \item\texttt{enumitem}: formatação de alíneas;
+        \item\texttt{fancyhdr}: formatação dos cabeçalhos;
+        \item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
+        \item\texttt{geometry}: mudança do tamanho das margens;
+        \item\texttt{glossaries}\index{glossaries@\emph{glossaries}}: permite a criação de listas de símbolos e abreviaturas;
+        \item\texttt{graphicx}: importação e utilização de imagens;
+        \item\texttt{hyperref}: gera os links entre referências no PDF;
+        \item\texttt{icomma}: define a vírgula como separador de decimais no ambiente matemático (padrão português brasileiro);
         \item\texttt{ifthen}: permite a utilização de condições na geração do texto;
         \item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
-        \item\index{glossaries@\emph{glossaries}}\texttt{glossaries}: permite a criação de listas de símbolos e abreviaturas;
-        \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
-        \item\texttt{amsthm}: possibilita criação de teoremas (e derivados); 
+        \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
+        \item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
+        \item\texttt{morewrites}: permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente;
+        \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
+        \item\texttt{setspace}: espaçamento entre linhas aproximado de 1,5 linhas;
         \item\texttt{thmtools}: conjunto de macros para o pacote \texttt{amsthm};
-        \item\texttt{morewrites}:  permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente.
+        \item\texttt{times}: carrega fonte Times New Roman;
+        \item\texttt{tocloft}: permite melhor personalização de itens do sumário, lista de figuras e tabelas;
+        \item\texttt{uarial}: carrega fonte URW Arial.
     \end{enumerate}
 
-Ainda é necessário importar o pacote \texttt{inputenc}, responsável pela codificação dos arquivos \texttt{tex} de entrada (normalmente \texttt{latin1} ou \texttt{utf8}).
+    Ainda é necessário importar o pacote \texttt{inputenc}, responsável pela codificação dos arquivos \texttt{tex} de entrada (normalmente \texttt{latin1} ou \texttt{utf8}).
+
+    Os scripts de alguns programas \TeX\, como o \texttt{makeglossaries}, são dependentes da linguagem \index{Perl}Perl, a qual vem instalada por padrão em alguns sistemas operacionais. Para os usuários de Windows, no entanto, o Perl deve ser instalado separadamente e pode ser encontrado em \url{https://www.perl.org/}.
 
 \chapter{COMANDOS E AMBIENTES}\label{chap:comandos}
 
@@ -225,7 +229,7 @@ A declaração da classe é feita da seguinte forma:
   % \item \texttt{bacharelado}, \texttt{especializacao}, \texttt{mestrado}, \texttt{doutorado}: realiza as modificações necessárias nos textos das folhas de rosto e de aprovação;
   % \item \texttt{male-author}/\texttt{female-author}: esta opção altera o texto de páginas geradas automaticamente para que reflitam o gênero do autor/autora;
   % \item \texttt{male-advisor}/\texttt{female-advisor}: esta opção altera o texto de páginas geradas automaticamente para que reflitam o gênero do orientador/orientadora;
-  \item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressas em formato frente-e-verso. Por ser derivada da classe \texttt{report}, a classe da FEI pode receber algumas opções típicas de \texttt{report}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade.
+  \item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{report}, a classe da FEI pode receber algumas opções nativas de \texttt{report}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
 	\end{enumerate}
 	
 	\subsection{Nome do autor, e título}
@@ -499,6 +503,16 @@ A classe da FEI disponibiliza os ambientes \emph{axioma, teorema, lema, hipotese
     Segundo o padrão da biblioteca, ``se houver necessidade de enumerar diversos assuntos dentro de uma seção, deve-se utilizar alíneas
 ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com margem de 1,25 cm''. Para que não houvesse problemas de formatação, o ambiente \texttt{itemize} foi redirecionado para utilizar o \texttt{enumerate} e este passa a utilizar letras para a sequência de items (como utilizado na seção~\ref{sec:dependencias}). Alíneas em segundo nível são iniciadas pelo caractere \emph{en dash} (--).
 
+\begin{enumerate}
+  \item Primeiro item;
+  \item Segundo item;
+  \begin{enumerate}
+    \item Primeiro sub-item;
+    \item Segundo sub-item.
+  \end{enumerate}
+  \item Terceiro item.
+\end{enumerate}
+
 	\section{PÓS-TEXTO}\label{sec:postexto}
 	
 	Fazem parte dos elementos pós-textuais as referências bibliográficas, apêndices, anexos e o índice remissivo. Este capítulo descreve os comandos para \emph{inserção} destes elementos. Os capítulos seguintes instruirão como \emph{criá-los}.
@@ -679,7 +693,7 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	A indexação de símbolos é feita utilizando o comando
 	
-	\verb+\newglossaryentry{1}{parent={2},type=simbolos,+
+	\verb+\newglossaryentry{1}{parent={2},type=symbols,+
 	
 	\verb+name={3},sort={4},description={5}}+, onde:
 	
@@ -691,7 +705,7 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	\item 5: a descrição do símbolo, que aparecerá na lista.
 	\end{enumerate}
 	
-	Exemplo: \verb+\newglossaryentry{pi}{parent=greek,type=simbolos,+
+	Exemplo: \verb+\newglossaryentry{pi}{parent=greek,type=symbols,+
 	
 			 \verb+name={\ensuremath{\pi}},sort=p,+
 			 
@@ -720,20 +734,22 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 
   É importante ressaltar que o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \verb+\glsaddall+ no corpo do texto.
 
-  \section{SUB-LISTAS DE SÍMBOLOS}\label{sec:sublist}
-  Atendendo à demanda de alunos que utilizam uma quantidade muito extensa de símbolos em seus trabalhos, a classe da FEI passou a suportar o uso de sub-listas se símbolos. Para que sub-listas sejam usadas, basta que a opção \texttt{sublist} seja passada à classe. Neste modo, os símbolos devem ser inseridos em \emph{categorias}. O exemplo abaixo demonstra como criar uma categoria de símbolos e inserir um símbolo nela. Mais de uma categoria de símbolos pode ser criada. Para mais exemplos, consulte os arquivos de exemplo do repositório ou o manual do pacote \texttt{glossaries}.
+  \section{HIERARQUIA DE SÍMBOLOS}\label{sec:sublist}
+  Atendendo à demanda de alunos que utilizam uma quantidade muito extensa de símbolos em seus trabalhos, a classe da FEI passou a suportar o uso de listas se símbolos que permitam a ordenação hierárquica dos símbolos. Esta adição foi feita através do uso do estilo \texttt{alttree} do pacote \texttt{glossaries}. Para que este estilo seja utilizado no documento, a opção \texttt{sublist} deve ser passada à classe.
+
+  O exemplo abaixo demonstra como criar uma categoria de símbolos e inserir um símbolo nela. Mais de uma categoria de símbolos pode ser criada. Para mais exemplos, consulte os arquivos de exemplo do repositório ou o manual do pacote \texttt{glossaries}.
 
   \begin{verbatim}
   \newglossaryentry{greek}{name={Letras gregas},
-    description={\nopostdesc},sort=b}
-  \newglossaryentry{deltap}{parent=greek,type=simbolos,
-    name={\ensuremath{\Delta P}},sort=p,
+    description={\nopostdesc},sort=a}
+  \newglossaryentry{deltap}{parent=greek,type=symbols,
+    name={\ensuremath{\Delta P}},sort=deltap,
     description={pressure drop, $Pa$}}
   \end{verbatim}
 	
 	\section{IMPRIMINDO AS LISTAS}
-	
-	O comando \verb+\printglossaries+ imprime ambas as listas em sequência.
+
+  A lista de abreviaturas pode ser impressa através do comando \verb+\printacronyms+. A lista de símbolos pode ser impressa através do comando \verb+\printsymbols+. Todas as listas criadas através do pacote \texttt{glossaries}, inclusive as definidas pelo próprio usuário, podem ser impressas sequencialmente através do comando \verb+\printglossaries+.
 
 \chapter{COMPILANDO O PROJETO} \label{chap:compilando}
 	
@@ -773,10 +789,10 @@ Caso o \index{xindy@\emph{xindy}}\emph{xindy} esteja sendo usado como o motor de
 
 Existem diversas ferramentas que automatizam o processo de compilação de um documento em \LaTeX, abstraindo o usuário da complexidade de utilizar todos os programas menores que geram o arquivo final. Duas dessas ferramentas são o \texttt{latexmk} e o \texttt{rubber}, ambas criadas especificamente para realizar a automatização da compilação de documentos \TeX. Supondo que haja um arquivo chamado \texttt{documento.tex} no diretório atual, os comandos seguintes geram um PDF completo.
 
-\begin{description}
-\item[\texttt{latexmk}] \texttt{-pdf -interaction=nonstopmode documento}
-\item[\texttt{rubber}] \texttt{-d documento}
-\end{description}
+\begin{enumerate}
+\item \texttt{latexmk -pdf -interaction=nonstopmode documento}
+\item \texttt{rubber -d documento}
+\end{enumerate}
 
 Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário especificar o nome do documento, assim como nunca é necessário deixar explícito tanto ao \texttt{latexmk} quanto ao \texttt{rubber} se o documento sendo compilado possui bibliografia, índices ou listas. Os programas detectam a existência desses construtos adicionais examinando os arquivos auxiliares gerados durante o processo e executam todos os comandos apropriados na ordem certa e o número suficiente de vezes.
 	
@@ -1121,6 +1137,13 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
   \arialfalse
 }
 
+\newif\iftwoside
+\twosidefalse
+\DeclareOption{twoside}
+{
+  \twosidetrue
+}
+
 \DeclareOption{algo-as-figure}
 {
   \PassOptionsToPackage{figure}{algorithm2e}
@@ -1185,11 +1208,11 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \ProcessOptions\relax % processa todas as opções
 
 % tamanho do papel (A4) e margens
-\setlength{\paperheight}{297mm} 
-\setlength{\paperwidth}{210mm}
+% \setlength{\paperheight}{297mm} 
+% \setlength{\paperwidth}{210mm}
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
 \renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
-\RequirePackage[top=3cm,bottom=2cm,left=3cm,right=2cm]{geometry}
+\RequirePackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm,bindingoffset=0cm,nofoot]{geometry}
 
 % cabecalho e rodape
 \RequirePackage{fancyhdr}
@@ -1220,8 +1243,9 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \clubpenalty=10000
 
 % outros pacotes
-\RequirePackage{mathtools}     % matematica
-\RequirePackage{lmodern}       % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
+\RequirePackage{mathtools} % matematica
+\RequirePackage{lmodern} % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
+\RequirePackage{icomma} % vírgula como separador decimal
 
 \ifarial
   % \RequirePackage{helvet}
@@ -1253,8 +1277,10 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \SetKwRepeat{Repita}{repita}{at\'e}
 
 %outras opções do pacote de algoritmos
-\SetAlgoCaptionSeparator{--} % separador da legenda
-\SetAlCapFnt{\footnotesize} % fonte da legenda
+\renewcommand{\@algocf@capt@plain}{above} % legenda acima
+\SetAlgoCaptionSeparator{ --} % separador da legenda
+\SetAlCapSty{} % estilo da primeira parte da legenda (remove negrito padrão)
+\SetAlCapFnt{\normalsize} % fonte da primeira parte da legenda
 % \SetAlCapSkip{10pt} % espaçamento entre algoritmo e legenda
 % teoremas
 \RequirePackage{amsthm,thmtools}
@@ -1265,8 +1291,8 @@ spaceabove=6pt, spacebelow=6pt,
 headfont=\normalfont\bfseries,
 notefont=\normalfont\bfseries, notebraces={-- }{},
 bodyfont=\normalfont,
-postheadspace=1em,
-qed=\qedsymbol
+postheadspace=1em
+% qed=\qedsymbol
 ]{feistyle}
 
 % declaração dos principais tipos de teoremas que o usuário pode querer vir a usar
@@ -1293,35 +1319,34 @@ qed=\qedsymbol
 \renewcommand{\figurename}{\fontsize{10pt}{10pt}\selectfont Figura}
 \renewcommand{\tablename}{\fontsize{10pt}{10pt}\selectfont Tabela}
 % listas
+\RequirePackage{enumitem}
+\setlist[1]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={\alph*)},ref=\theenumi}
+\setlist[2]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
 \renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
-\renewcommand{\theenumi}{\alph{enumi})}                        % deixa as listas com letras no lugar do numero
-\renewcommand{\labelenumi}{\theenumi}                          % continuacao
  
- % troca a numeracao no segundo nivel para letras
-\renewcommand{\theenumii}{--}
-\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
 
 % divisoes do texto
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
-\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
+\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
 
 % não há recuo no título de nenhum nível de nenhuma seção
 % títulos dos capítulos são em negrito, maiúsculo e com distâncias de 1,5 cm do parágrafo que o sucede
-\renewcommand{\chapter}{\clearpage%
-\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
+\renewcommand{\chapter}{\clearpage\pagestyle{fancy}%
+\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
 
 % demais níveis de seção possuem distância de 1,5 linhas do parágrafo sucessor e predecessor
 \renewcommand{\section}{% 
-\@startsection{section}{1}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
+\@startsection{section}{1}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
 
 \renewcommand{\subsection}{% 
-\@startsection{subsection}{2}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
+\@startsection{subsection}{2}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
 
 \renewcommand{\subsubsection}{% 
-\@startsection{subsubsection}{3}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\itshape}}
+\@startsection{subsubsection}{3}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\itshape}}
 
 \renewcommand{\paragraph}{% 
-\@startsection{paragraph}{4}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
+\@startsection{paragraph}{4}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
 
 \setcounter{secnumdepth}{4} % numerar divisões até o quarto nível (paragraph)
 \setcounter{tocdepth}{4} % incluir divisões no sumário até o quarto nível (paragraph)
@@ -1365,8 +1390,8 @@ qed=\qedsymbol
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
-\setlength{\cftfignumwidth}{7em} % espaço onde a palavra "Ilustração" é escrita
-\setlength{\cfttabnumwidth}{5.5em} % espaço onde a palavra "Tabela" é escrita
+\setlength{\cftfignumwidth}{7.2em} % espaço onde a palavra "Ilustração" é escrita
+\setlength{\cfttabnumwidth}{5.7em} % espaço onde a palavra "Tabela" é escrita
 \renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
 \renewcommand{\cfttabpresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
 \renewcommand{\cftfigaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de ilustrações
@@ -1378,9 +1403,9 @@ qed=\qedsymbol
 
 % redefine sumário e listas de figuras e tabelas, removendo numeração das
 % páginas e adicionando os títulos certos das páginas
-\renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\clearpage\pagestyle{fancy}}
-\renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\clearpage\pagestyle{fancy}}
-\renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\clearpage\pagestyle{fancy}}
+\renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\cleardoublepage}
+\renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\cleardoublepage}
+\renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\cleardoublepage}
 
 % redefinindo listas de algoritmos e teoremas para formatar os títulos das
 % páginas e adicionar 'algoritmo' e 'teorema' antes dos números de cada entrada
@@ -1388,19 +1413,19 @@ qed=\qedsymbol
 \renewcommand{\listofalgorithms}{\begingroup%
 \let\oldnumberline\numberline%
 \renewcommand{\numberline}{Algoritmo~\oldnumberline}%
-\part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}\endgroup}
+\part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage\endgroup}
+
 \renewcommand{\listoftheorems}{\begingroup%
 \let\oldnumberline\numberline%
 \renewcommand{\numberline}{Teorema~\oldnumberline}%
-\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\endgroup}
+\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\cleardoublepage\endgroup}
 
 \def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
 
 % novas paginas
 % capa
 \renewcommand{\maketitle}{
-\clearpage
-\thispagestyle{empty}
+\pagestyle{empty}
 \begin{center}
 \textbf{
 \MakeUppercase{\@instituicao}\\[\baselineskip]
@@ -1409,8 +1434,9 @@ qed=\qedsymbol
 \MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
 \vfill
 \@cidade\\
-\number\year
+\number\year%
 \end{center}
+\cleardoublepage
 }
 
 % comando folha de rosto, com texto automatizado
@@ -1436,7 +1462,7 @@ qed=\qedsymbol
 
 % folha de rosto
 \newenvironment{folhaderosto}{
-\clearpage
+\setcounter{page}{1}
 \thispagestyle{empty}
 \begin{center}
 \uppercase\expandafter{\@author}\\
@@ -1449,7 +1475,8 @@ qed=\qedsymbol
 \vfill
 \@cidade\\
 \number\year
-\end{center}}
+\end{center}%
+\clearpage}
 
 % folha de aprovação: procura o arquivo *ata.pdf* e inclui no texto
 % se a classe recebeu a opção rascunho, deixa um texto no lugar falando que pagina é essa
@@ -1457,60 +1484,23 @@ qed=\qedsymbol
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
 	\ifrascunho
-	\includepdf{ata.pdf}
+	  \includepdf{ata.pdf}\cleardoublepage
 	\else
-	\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
-
-	% abaixo segue um modelo de folha de aprovação, que não pôde ser utilizado devido ás especificidades de cada trabalho
-	% \clearpage
-	% \thispagestyle{empty}
-	% \begin{center}
-	% 	\uppercase\expandafter{\@author}\\
-	% 	\vspace*{0.115\textheight}
-	% 	\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-		
-	% 	\vspace{0.06\textheight}
-	% 	\begin{minipage}{\textwidth}
-	% 		\begin{singlespace}
-	% 			\@tipo\ ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau\ em \@curso.
-	% 		\end{singlespace}
-	% 	\end{minipage}
-		
-	% 	\vspace*{0.07\textheight}
-	% 	Comiss\~ao julgadora
-		
-	% 	\vspace*{0.07\textheight}
-	% 	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-		
-	% 	\vspace*{0.005\textheight}
-	% 	Orientador e Presidente
-		
-	% 	\vspace*{0.075\textheight}
-	% 	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-		
-	% 	\vspace*{0.005\textheight}
-	% 	Examinador (1)
-		
-	% 	\vspace*{0.075\textheight}
-	% 	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-		
-	% 	\vspace*{0.005\textheight}
-	% 	Examinador (2)
-		
-	% 	\vfill
-	% 	\@cidade\\
-	% 	\number\year
-	% \end{center}
+	  \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
 	\fi
 }
 
 % ficha catalográfica: funciona da mesma forma da folha de aprovação, só que procura o arquivo *ficha.pdf*
 \newcommand{\fichacatalografica}{
+  \iftwoside
+  \else
+    % se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
     \addtocounter{page}{-1}
+  \fi
 	\ifrascunho
-		\includepdf{ficha.pdf}
+		\includepdf{ficha.pdf}\cleardoublepage
 	\else
-		\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}
+	  \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
 	\fi
 }
 
@@ -1536,7 +1526,7 @@ qed=\qedsymbol
 
 % dedicatória
 \newcommand{\dedicatoria}[1]{
-\clearpage
+\cleardoublepage
 \thispagestyle{empty}
 \begin{flushleft}
 \vspace*{\fill}
@@ -1549,7 +1539,7 @@ qed=\qedsymbol
 
 % epígrafe
 \newcommand{\epigrafe}[2]{
-\clearpage
+\cleardoublepage
 \thispagestyle{empty}
 \begin{flushleft}
 \vspace*{\fill}
@@ -1561,13 +1551,13 @@ qed=\qedsymbol
 }
 
 % resumo
-\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\clearpage\pagestyle{fancy}}
+\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\cleardoublepage\pagestyle{fancy}}
 
 % abstract
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\clearpage\pagestyle{fancy}\selectlanguage{portuges}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\cleardoublepage\pagestyle{fancy}\selectlanguage{portuges}}
 
 % agradecimentos
-\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\clearpage\pagestyle{fancy}}
+\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{fancy}}
 
 % índice
 \RequirePackage{imakeidx}
@@ -1587,28 +1577,48 @@ qed=\qedsymbol
 
 % pacote para gerar listas (símbolos, abreviaturas, etc)
 \ifsublist
-  \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
+  \RequirePackage[symbols,nomain,acronym,nonumberlist]{glossaries}
   % estilo usado como base
   \setglossarystyle{alttree}
   % Configuracao de identacao do nivel 0 (titulos)
   \glssetwidest[0]{}
   % Configuracao de identacao do nivel 1 (a lista de simbolos em si)
   \glssetwidest[1]{aaaaaaaaaaaa}
+  
+  % remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
+  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
+  
 \else
-  \RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+  \RequirePackage[symbols,nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+
+  \newglossarystyle{mylong}{%
+    \setglossarystyle{long}% base this style on the long style
+    \renewenvironment{theglossary}{%
+      \begin{longtable*}{lp{\glsdescwidth}}}%
+    {\end{longtable*}}%
+  }%
+
+  \setglossarystyle{mylong}
+  \renewcommand{\glsnamefont}[1]{\textbf{#1}}
+  \setlength\LTleft{0pt}
+  \setlength\LTright{0pt}
+  \setlength\glsdescwidth{\linewidth}
+
+  % remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
+  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 \fi
 
 \addto\captionsportuges{%
   \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
   \renewcommand*{\contentsname}{Sum\'ario}%
-  \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}}
+  \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
+  \renewcommand*{\glssymbolsgroupname}{\hfill Lista de S\'imbolos \hfill \mbox{}}}
 
-\newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
+% remove número de página das listas de símbolos e abreviaturas (executado nas demais páginas)
+\renewcommand*{\glsclearpage}{\pagestyle{empty}}
+% remove número de página das listas de símbolos e abreviaturas (executado na última página)
+\renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
 
-% remove espaco em branco no inicio das listas
-% \renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
-\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
-% \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
@@ -1620,7 +1630,7 @@ qed=\qedsymbol
 \renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
 \renewcommand{\chapter}[1]{% redefine o comando do capítulo
 \stepcounter{chapter}% soma 1 ao contador do capítulo
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
+\clearpage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
 \addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
 \newpage%
 }%
@@ -1633,7 +1643,8 @@ qed=\qedsymbol
 \renewcommand{\thechapter}{\Alph{chapter}}%
 \renewcommand{\chapter}[1]{%
 \stepcounter{chapter}%
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
+\clearpage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
+\phantomsection%
 \addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}ANEXO \Alph{chapter} -- ##1}%
 \newpage%
 }%
@@ -1641,14 +1652,14 @@ qed=\qedsymbol
 
 % referências e citações
 %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
-\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite}
+\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes,abnt-thesis-year=title]{abntex2cite}
 \newcommand*{\citefloat}[1]{\citeauthoronline{#1}, \citeyear{#1}}
 
 % modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
 \renewenvironment{quote}
                {\begin{singlespace}\list{}{%
                \fontsize{10pt}{1em}%
-               \leftmargin=2cm \rightmargin=2cm}%
+               \leftmargin=4cm}%
                \item\relax\ignorespaces}
                {\endlist\end{singlespace}}
 
@@ -1677,8 +1688,7 @@ qed=\qedsymbol
 \let\oldbibliography\bibliography
 \renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
-  \clearpage%
-  \addcontentsline{toc}{section}{\hspace{\cftparanumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
-  \oldbibliography{#1}% adiciona realmente a bibliografia
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}\mdseries REFER\^ENCIAS}% adiciona o titulo ao sumario
+\oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %</class>

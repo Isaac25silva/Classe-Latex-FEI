@@ -46,6 +46,13 @@
   \arialfalse
 }
 
+\newif\iftwoside
+\twosidefalse
+\DeclareOption{twoside}
+{
+  \twosidetrue
+}
+
 \DeclareOption{algo-as-figure}
 {
   \PassOptionsToPackage{figure}{algorithm2e}
@@ -64,11 +71,9 @@
 
 \ProcessOptions\relax % processa todas as opções
 
-\setlength{\paperheight}{297mm}
-\setlength{\paperwidth}{210mm}
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
 \renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
-\RequirePackage[top=3cm,bottom=2cm,left=3cm,right=2cm]{geometry}
+\RequirePackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm,bindingoffset=0cm,nofoot]{geometry}
 
 \RequirePackage{fancyhdr}
 \pagenumbering{arabic} % estilo da numeração das páginas
@@ -93,8 +98,9 @@
 \widowpenalty=10000
 \clubpenalty=10000
 
-\RequirePackage{mathtools}     % matematica
-\RequirePackage{lmodern}       % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
+\RequirePackage{mathtools} % matematica
+\RequirePackage{lmodern} % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
+\RequirePackage{icomma} % vírgula como separador decimal
 
 \ifarial
   % \RequirePackage{helvet}
@@ -124,8 +130,10 @@
 \SetKwFor{Enqto}{enquanto}{fa\c{c}a}{fim enqto}
 \SetKwRepeat{Repita}{repita}{at\'e}
 
-\SetAlgoCaptionSeparator{--} % separador da legenda
-\SetAlCapFnt{\footnotesize} % fonte da legenda
+\renewcommand{\@algocf@capt@plain}{above} % legenda acima
+\SetAlgoCaptionSeparator{ --} % separador da legenda
+\SetAlCapSty{} % estilo da primeira parte da legenda (remove negrito padrão)
+\SetAlCapFnt{\normalsize} % fonte da primeira parte da legenda
 \RequirePackage{amsthm,thmtools}
 \renewcommand{\listtheoremname}{Lista de Teoremas} % traduz nome da lista de teoremas
 
@@ -134,8 +142,7 @@ spaceabove=6pt, spacebelow=6pt,
 headfont=\normalfont\bfseries,
 notefont=\normalfont\bfseries, notebraces={-- }{},
 bodyfont=\normalfont,
-postheadspace=1em,
-qed=\qedsymbol
+postheadspace=1em
 ]{feistyle}
 
 \declaretheorem[style=feistyle,name=Axioma]{axioma}
@@ -158,31 +165,30 @@ qed=\qedsymbol
 
 \renewcommand{\figurename}{\fontsize{10pt}{10pt}\selectfont Figura}
 \renewcommand{\tablename}{\fontsize{10pt}{10pt}\selectfont Tabela}
+\RequirePackage{enumitem}
+\setlist[1]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={\alph*)},ref=\theenumi}
+\setlist[2]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
 \renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
-\renewcommand{\theenumi}{\alph{enumi})}                        % deixa as listas com letras no lugar do numero
-\renewcommand{\labelenumi}{\theenumi}                          % continuacao
 
- % troca a numeracao no segundo nivel para letras
-\renewcommand{\theenumii}{--}
-\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
 
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
-\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
+\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
 
-\renewcommand{\chapter}{\clearpage%
-\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
+\renewcommand{\chapter}{\clearpage\pagestyle{fancy}%
+\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
 
 \renewcommand{\section}{%
-\@startsection{section}{1}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
+\@startsection{section}{1}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
 
 \renewcommand{\subsection}{%
-\@startsection{subsection}{2}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
+\@startsection{subsection}{2}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
 
 \renewcommand{\subsubsection}{%
-\@startsection{subsubsection}{3}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\itshape}}
+\@startsection{subsubsection}{3}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\itshape}}
 
 \renewcommand{\paragraph}{%
-\@startsection{paragraph}{4}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
+\@startsection{paragraph}{4}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
 
 \setcounter{secnumdepth}{4} % numerar divisões até o quarto nível (paragraph)
 \setcounter{tocdepth}{4} % incluir divisões no sumário até o quarto nível (paragraph)
@@ -219,32 +225,32 @@ qed=\qedsymbol
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
-\setlength{\cftfignumwidth}{7em} % espaço onde a palavra "Ilustração" é escrita
-\setlength{\cfttabnumwidth}{5.5em} % espaço onde a palavra "Tabela" é escrita
+\setlength{\cftfignumwidth}{7.2em} % espaço onde a palavra "Ilustração" é escrita
+\setlength{\cfttabnumwidth}{5.7em} % espaço onde a palavra "Tabela" é escrita
 \renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
 \renewcommand{\cfttabpresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
 \renewcommand{\cftfigaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de ilustrações
 \renewcommand{\cfttabaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de tabelas
 
 
-\renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\clearpage\pagestyle{fancy}}
-\renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\clearpage\pagestyle{fancy}}
-\renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\clearpage\pagestyle{fancy}}
+\renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\cleardoublepage}
+\renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\cleardoublepage}
+\renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\cleardoublepage}
 
 \renewcommand{\listofalgorithms}{\begingroup%
 \let\oldnumberline\numberline%
 \renewcommand{\numberline}{Algoritmo~\oldnumberline}%
-\part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}\endgroup}
+\part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage\endgroup}
+
 \renewcommand{\listoftheorems}{\begingroup%
 \let\oldnumberline\numberline%
 \renewcommand{\numberline}{Teorema~\oldnumberline}%
-\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\endgroup}
+\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\cleardoublepage\endgroup}
 
 \def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
 
 \renewcommand{\maketitle}{
-\clearpage
-\thispagestyle{empty}
+\pagestyle{empty}
 \begin{center}
 \textbf{
 \MakeUppercase{\@instituicao}\\[\baselineskip]
@@ -253,13 +259,14 @@ qed=\qedsymbol
 \MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
 \vfill
 \@cidade\\
-\number\year
+\number\year%
 \end{center}
+\cleardoublepage
 }
 
 
 \newenvironment{folhaderosto}{
-\clearpage
+\setcounter{page}{1}
 \thispagestyle{empty}
 \begin{center}
 \uppercase\expandafter{\@author}\\
@@ -272,34 +279,29 @@ qed=\qedsymbol
 \vfill
 \@cidade\\
 \number\year
-\end{center}}
+\end{center}%
+\clearpage}
 
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
 \ifrascunho
-\includepdf{ata.pdf}
+  \includepdf{ata.pdf}\cleardoublepage
 \else
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
-
-
-
-
-
-
-
-
-
-
+  \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
 \fi
 }
 
 \newcommand{\fichacatalografica}{
+  \iftwoside
+  \else
+    % se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
     \addtocounter{page}{-1}
+  \fi
 \ifrascunho
-\includepdf{ficha.pdf}
+\includepdf{ficha.pdf}\cleardoublepage
 \else
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}
+  \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
 \fi
 }
 
@@ -319,7 +321,7 @@ qed=\qedsymbol
 \newcommand{\curso}[1]{\def\@curso{#1}}
 
 \newcommand{\dedicatoria}[1]{
-\clearpage
+\cleardoublepage
 \thispagestyle{empty}
 \begin{flushleft}
 \vspace*{\fill}
@@ -331,7 +333,7 @@ qed=\qedsymbol
 }
 
 \newcommand{\epigrafe}[2]{
-\clearpage
+\cleardoublepage
 \thispagestyle{empty}
 \begin{flushleft}
 \vspace*{\fill}
@@ -342,11 +344,11 @@ qed=\qedsymbol
 \end{flushleft}
 }
 
-\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\clearpage\pagestyle{fancy}}
+\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\cleardoublepage\pagestyle{fancy}}
 
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\clearpage\pagestyle{fancy}\selectlanguage{portuges}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\cleardoublepage\pagestyle{fancy}\selectlanguage{portuges}}
 
-\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\clearpage\pagestyle{fancy}}
+\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{fancy}}
 
 \RequirePackage{imakeidx}
 \renewcommand{\indexname}{\'Indice}
@@ -361,25 +363,45 @@ qed=\qedsymbol
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
 \ifsublist
-  \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
+  \RequirePackage[symbols,nomain,acronym,nonumberlist]{glossaries}
   % estilo usado como base
   \setglossarystyle{alttree}
   % Configuracao de identacao do nivel 0 (titulos)
   \glssetwidest[0]{}
   % Configuracao de identacao do nivel 1 (a lista de simbolos em si)
   \glssetwidest[1]{aaaaaaaaaaaa}
+
+  % remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
+  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
+
 \else
-  \RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+  \RequirePackage[symbols,nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+
+  \newglossarystyle{mylong}{%
+    \setglossarystyle{long}% base this style on the long style
+    \renewenvironment{theglossary}{%
+      \begin{longtable*}{lp{\glsdescwidth}}}%
+    {\end{longtable*}}%
+  }%
+
+  \setglossarystyle{mylong}
+  \renewcommand{\glsnamefont}[1]{\textbf{#1}}
+  \setlength\LTleft{0pt}
+  \setlength\LTright{0pt}
+  \setlength\glsdescwidth{\linewidth}
+
+  % remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
+  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 \fi
 
 \addto\captionsportuges{%
   \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
   \renewcommand*{\contentsname}{Sum\'ario}%
-  \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}}
+  \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
+  \renewcommand*{\glssymbolsgroupname}{\hfill Lista de S\'imbolos \hfill \mbox{}}}
 
-\newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
-
-\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
+\renewcommand*{\glsclearpage}{\pagestyle{empty}}
+\renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
@@ -390,7 +412,7 @@ qed=\qedsymbol
 \renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
 \renewcommand{\chapter}[1]{% redefine o comando do capítulo
 \stepcounter{chapter}% soma 1 ao contador do capítulo
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
+\clearpage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
 \addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
 \newpage%
 }%
@@ -402,19 +424,20 @@ qed=\qedsymbol
 \renewcommand{\thechapter}{\Alph{chapter}}%
 \renewcommand{\chapter}[1]{%
 \stepcounter{chapter}%
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
+\clearpage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
+\phantomsection%
 \addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}ANEXO \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
 
-\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite}
+\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes,abnt-thesis-year=title]{abntex2cite}
 \newcommand*{\citefloat}[1]{\citeauthoronline{#1}, \citeyear{#1}}
 
 \renewenvironment{quote}
                {\begin{singlespace}\list{}{%
                \fontsize{10pt}{1em}%
-               \leftmargin=2cm \rightmargin=2cm}%
+               \leftmargin=4cm}%
                \item\relax\ignorespaces}
                {\endlist\end{singlespace}}
 
@@ -438,9 +461,8 @@ qed=\qedsymbol
 \let\oldbibliography\bibliography
 \renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
-  \clearpage%
-  \addcontentsline{toc}{section}{\hspace{\cftparanumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
-  \oldbibliography{#1}% adiciona realmente a bibliografia
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}\mdseries REFER\^ENCIAS}% adiciona o titulo ao sumario
+\oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %% 
 %% Copyright (C) 2014 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
