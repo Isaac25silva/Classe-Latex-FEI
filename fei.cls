@@ -312,7 +312,7 @@ postheadspace=1em
 \def\@cidade{S\~ao Bernardo do Campo}
 \newcommand{\cidade}[1]{\def\@cidade{#1}}
 
-\def\@instituicao{Centro Universit\'ario da FEI}
+\def\@instituicao{Centro Universit\'ario FEI}
 \newcommand{\instituicao}[1]{\def\@instituicao{#1}}
 
 \newcommand{\advisor}[1]{\def\@advisor{#1}}
