@@ -17,16 +17,18 @@
 \newacronym[longplural=Computational Aided Design]{cad}{CAD}{Computational Aided Design}
 \newacronym[longplural=Centro Universitário da FEI]{fei}{FEI}{Centro Universitário da FEI}
 %% -- Simbolos
-\newglossaryentry{A}{type=simbolos,name={\ensuremath{A}},sort=a,description={exchanger total heat transfer area, $m^2$}}
-\newglossaryentry{G}{type=simbolos,name={\ensuremath{G}},sort=g,description={exchanger flow-stream mass velocity, $kg/(s m^2)$}}
-\newglossaryentry{f}{type=simbolos,name={\ensuremath{j}},sort=j,description={friction factor, dimensionless}}
-\newglossaryentry{deltap}{type=simbolos,name={\ensuremath{\Delta P}},sort=p,description={pressure drop, $Pa$}}
-\newglossaryentry{nu}{type=simbolos,name={\ensuremath{\nu}},sort=b,description={specific volume, $m^3/kg$}}
-\newglossaryentry{beta}{type=simbolos,name={\ensuremath{\beta}},sort=b,description={ratio of free-flow area $A_{ff}$ and frontal area $A_{fr}$ of one side of exchanger, dimensionless}}
-\newglossaryentry{fr}{type=simbolos,name={\ensuremath{fr}},sort=fr,description={frontal}}
-\newglossaryentry{in}{type=simbolos,name={\ensuremath{i}},sort=in,description={inlet}}
-\newglossaryentry{out}{type=simbolos,name={\ensuremath{o}},sort=out,description={outlet}}
+\newglossaryentry{A}{type=symbols,name={\ensuremath{A}},sort=a,description={exchanger total heat transfer area, $m^2$}}
+\newglossaryentry{G}{type=symbols,name={\ensuremath{G}},sort=g,description={exchanger flow-stream mass velocity, $kg/(s m^2)$}}
+\newglossaryentry{f}{type=symbols,name={\ensuremath{j}},sort=j,description={friction factor, dimensionless}}
+\newglossaryentry{deltap}{type=symbols,name={\ensuremath{\Delta P}},sort=p,description={pressure drop, $Pa$}}
+\newglossaryentry{nu}{type=symbols,name={\ensuremath{\nu}},sort=b,description={specific volume, $m^3/kg$}}
+\newglossaryentry{beta}{type=symbols,name={\ensuremath{\beta}},sort=b,description={ratio of free-flow area $A_{ff}$ and frontal area $A_{fr}$ of one side of exchanger, dimensionless}}
+\newglossaryentry{fr}{type=symbols,name={\ensuremath{fr}},sort=fr,description={frontal}}
+\newglossaryentry{in}{type=symbols,name={\ensuremath{i}},sort=in,description={inlet}}
+\newglossaryentry{out}{type=symbols,name={\ensuremath{o}},sort=out,description={outlet}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\addbibresource{referencias.bib}
 
 \makeindex
 \makeglossaries
@@ -134,15 +136,15 @@ Sed a odio porttitor, lacinia libero vel, egestas sem. Donec accumsan tellus nec
     \caption{Donec accumsan tellus nec enim porttitor} \label{tbl:exemplo}
     \centering
     \begin{tabular}{|c|c|c|c|}
-    \hline 
-     & \(x_1\) & \(x_2\) & \(x_3\) \\ 
-    \hline 
-    \(y_1\) & 1 & 0 & 0 \\ 
-    \hline 
-    \(y_2\) & 0 & 1 & 0 \\ 
-    \hline 
-    \(y_3\) & 0 & 0 & 1 \\ 
-    \hline 
+    \hline
+     & \(x_1\) & \(x_2\) & \(x_3\) \\
+    \hline
+    \(y_1\) & 1 & 0 & 0 \\
+    \hline
+    \(y_2\) & 0 & 1 & 0 \\
+    \hline
+    \(y_3\) & 0 & 0 & 1 \\
+    \hline
     \end{tabular}
     \caption*{Fonte: Autor}
 \end{table}
@@ -159,11 +161,11 @@ Class aptent taciti sociosqu ad litora torquent per conubia nostra, per \index{l
 
 \Retorna \(c\)
 
-\caption{Algoritmo que calcula o teorema de Pitágoras, de acordo com \citeonline{heath1921history}.}
+\caption{Algoritmo que calcula o teorema de Pitágoras, de acordo com \textcite{heath1921history}.}
 \label{lst:alg}
 \end{algorithm}
 
-\bibliography{referencias}
+\printbibliography
 
 \printindex
 
